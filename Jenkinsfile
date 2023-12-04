@@ -4,21 +4,21 @@ pipeline {
         stage('Debug') {
             steps {
                 echo 'Starting pipeline execution...'
+                sh 'env'
             }
         }
         stage('Check Environment') {
             steps {
-
-                sh 'minikube -p minikube status'
-                sh 'minikube -p minikube docker-env'
+                sh 'docker info'
+                sh 'eval $(minikube docker-env)'
+                sh 'minikube status'
+                sh 'minikube - docker-env'
 
             }
         }
         stage('Build Docker Image') {
             steps {
                 sh 'minikube status'
-                sh 'docker info'
-                sh 'eval $(minikube docker-env)'
                 sh 'docker build -t my-web-server .'
             }
         }

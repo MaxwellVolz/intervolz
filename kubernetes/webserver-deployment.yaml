@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-webserver-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-webserver
+  template:
+    metadata:
+      labels:
+        app: test-webserver
+    spec:
+      containers:
+      - name: test-webserver
+        image: test-server:latest
+        imagePullPolicy: Never  # for local images
+        ports:
+        - containerPort: 80

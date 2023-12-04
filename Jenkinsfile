@@ -9,9 +9,9 @@ pipeline {
         stage('Check Environment') {
             steps {
                 sh 'minikube status'
-                sh 'docker info'
                 sh 'minikube -p minikube status'
                 sh 'minikube -p minikube docker-env'
+                sh 'docker info'
             }
         }
         stage('Build Docker Image') {

@@ -14,8 +14,7 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'eval $(minikube docker-env)'
-                sh 'docker build -t my-web-server .'
+                sh './minikube-setup.sh'
             }
         }
         stage('Deploy to Kubernetes') {

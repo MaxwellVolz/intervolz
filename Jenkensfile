@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Debug') {
+            steps {
+                echo 'Starting pipeline execution...'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh 'eval $(minikube docker-env)'

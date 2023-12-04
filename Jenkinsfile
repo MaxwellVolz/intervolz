@@ -6,6 +6,12 @@ pipeline {
                 echo 'Starting pipeline execution...'
             }
         }
+        stage('Check Environment') {
+            steps {
+                sh 'minikube status'
+                sh 'docker info'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 sh 'eval $(minikube docker-env)'

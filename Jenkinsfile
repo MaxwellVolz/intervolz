@@ -10,16 +10,16 @@ pipeline {
         stage('Check Environment') {
             steps {
                 echo 'Checking Environment...'
-                // sh 'minikube status'
-                // sh 'minikube - docker-env'
-                // sh 'docker info'
+                sh 'docker ps'
             }
         }
-        stage('Build Docker Image') {
+        stage('Build and Deploy Intervolz Locally') {
             steps {
                 sh '''
-                eval $(minikube docker-env) 
-                docker build -t my-web-server .
+                    docker build -t intervolz-website .
+                    docker stop intervolz-website-container || true
+                    docker rm intervolz-website-container || true
+                    docker run -d -p 8081:80 --name intervolz-website-container intervolz-website
                 '''
             }
         }

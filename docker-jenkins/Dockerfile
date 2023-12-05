@@ -4,7 +4,7 @@ USER root
 
 # Update package list and install essentials
 RUN apt-get update && apt-get install -y \
-    docker-ce-cli \
+    # docker-ce-cli \ need to install docker on the host machine see docs.docker.com/engine/install/ubuntu/
     git \
     # any other packages you need \
     && rm -rf /var/lib/apt/lists/*

@@ -1,7 +1,14 @@
 FROM jenkins/jenkins:lts
 
 USER root
-RUN apt-get update && apt-get install -y [package-names]
+
+# Update package list and install essentials
+RUN apt-get update && apt-get install -y \
+    docker-ce-cli \
+    git \
+    # any other packages you need \
+    && rm -rf /var/lib/apt/lists/*
+
 USER jenkins
 
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt

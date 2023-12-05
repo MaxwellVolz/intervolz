@@ -9,16 +9,15 @@ pipeline {
         }
         stage('Check Environment') {
             steps {
-                sh 'docker info'
-                sh 'eval $(minikube docker-env)'
-                sh 'minikube status'
-                sh 'minikube - docker-env'
-
+                echo 'Checking Environment...'
+                // sh 'minikube status'
+                // sh 'minikube - docker-env'
+                // sh 'docker info'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh 'minikube status'
+                sh 'eval $(minikube docker-env)'
                 sh 'docker build -t my-web-server .'
             }
         }

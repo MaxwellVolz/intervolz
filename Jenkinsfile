@@ -19,7 +19,7 @@ pipeline {
             steps {
                 sh '''
                 eval $(minikube docker-env) 
-                docker build -t my-web-server:latest .
+                docker build -t my-web-server .
                 '''
             }
         }

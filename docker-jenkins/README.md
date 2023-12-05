@@ -6,9 +6,9 @@
     - [Prereqs](#prereqs)
   - [Setup](#setup)
     - [Build](#build)
-    - [Run Docker](#run-docker)
     - [Persist Docker and set name](#persist-docker-and-set-name)
-  - [Monitor](#monitor)
+    - [Restart](#restart)
+    - [Monitor](#monitor)
 
 # General
 
@@ -42,7 +42,7 @@ The Dockerfile is the cornerstone of your Dockerized Jenkins setup. Here's a mor
 
 ```sh
 docker build -t my-custom-jenkins .
-```
+```fof
 
 ### Run Docker
 
@@ -61,7 +61,25 @@ docker run -p 8080:8080 -p 50000:50000 \
     my-custom-jenkins
 ```
 
-## Monitor
+```sh
+docker run 
+    -v /var/run/docker.sock:/var/run/docker.sock 
+    -v $(which docker):/usr/bin/docker 
+    -p 8080:8080 
+    -p 50000:50000 \
+    -v jenkins_home:/var/jenkins_home \
+    --restart always \
+    --name jenkins \
+    my-custom-jenkins
+```
+
+### Restart
+
+```sh
+docker stop jenkins
+```
+
+### Monitor
 
 ```sh
 docker ps

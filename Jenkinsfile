@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Celebrate good times!') {
             steps {
-                sh 'We are celebrating...'
+                echo 'We are celebrating...'
             }
         }
     }

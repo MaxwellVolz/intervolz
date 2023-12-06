@@ -27,12 +27,15 @@ The Dockerfile is the cornerstone of your Dockerized Jenkins setup. Here's a mor
 - Additional customization that can be achieved through scripts or Jenkins' Groovy hooks.
     - These scripts can be used to automate further configuration tasks, user setup, security settings, etc.
 
+
 ### Prereqs
 
 | Service | Check                       | Install |
 | ------- | --------------------------- | ------- |
 | git     | git -v                      |         |
 | docker  | sudo docker run hello-world |         |
+
+** using the Docker Pipeline Plugin in Docker**
 
 
 
@@ -62,11 +65,9 @@ docker run -p 8080:8080 -p 50000:50000 \
 ```
 
 ```sh
-docker run 
+docker run -p 8080:8080 -p 50000:50000 \
     -v /var/run/docker.sock:/var/run/docker.sock 
     -v $(which docker):/usr/bin/docker 
-    -p 8080:8080 
-    -p 50000:50000 \
     -v jenkins_home:/var/jenkins_home \
     --restart always \
     --name jenkins \

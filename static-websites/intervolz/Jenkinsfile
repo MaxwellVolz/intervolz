@@ -23,9 +23,9 @@ pipeline {
                 '''
             }
         }
-        stage('Deploy to Kubernetes') {
+        stage('Celebrate good times!') {
             steps {
-                sh 'kubectl apply -f kubernetes/webserver-deployment.yaml'
+                sh 'We are celebrating...'
             }
         }
     }

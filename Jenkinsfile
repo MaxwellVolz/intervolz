@@ -9,8 +9,8 @@ pipeline {
         }
         stage('Check Environment') {
             steps {
-                echo 'Checking Environment...'
-                sh 'docker ps'
+                echo 'Checking Environment...skipping for now...'
+                // sh 'docker ps'
             }
         }
         stage('Build and Deploy Intervolz Locally') {
@@ -27,11 +27,6 @@ pipeline {
                         '''
                     }
                 }
-            }
-        }
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh 'kubectl apply -f kubernetes/webserver-deployment.yaml'
             }
         }
     }

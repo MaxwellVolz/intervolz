@@ -2,6 +2,9 @@ FROM jenkins/jenkins:lts
 
 USER root
 
+RUN groupadd -g 137 docker && \
+    usermod -aG docker jenkins
+
 # Update package list and install essentials
 RUN apt-get update && apt-get install -y \
     # docker-ce-cli \ need to install docker on the host machine see docs.docker.com/engine/install/ubuntu/
